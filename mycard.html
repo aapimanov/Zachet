@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Моя визитная карточка</title>
+</head>
+<body>
+    <h1>Моя визитная карточка</h1>
+    <form>
+        <label for="full_name">ФИО:</label><br>
+        <input type="text" id="full_name" name="full_name" required><br><br>
+
+        <label for="birthdate">Дата рождения:</label><br>
+        <input type="date" id="birthdate" name="birthdate" required><br><br>
+
+        <label for="student_id">Номер зачетки:</label><br>
+        <input type="text" id="student_id" name="student_id" required><br><br>
+
+        <label for="gender">Пол:</label><br>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Мужской</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Женский</label><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="grade">Оценка:</label><br>
+        <select id="grade" name="grade">
+            <option value="Отлично">Отлично</option>
+            <option value="Хорошо">Хорошо</option>
+            <option value="Удовлетворительно">Удовлетворительно</option>
+            <option value="Неудовлетворительно">Неудовлетворительно</option>
+        </select><br><br>
+
+        <button type="button" onclick="generateCard()">Создать визитку</button>
+    </form>
+
+    <div id="cardContainer"></div>
+
+    <script>
+        function generateCard() {
+            var fullName = document.getElementById("full_name").value;
+            var birthdate = document.getElementById("birthdate").value;
+            var studentId = document.getElementById("student_id").value;
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var email = document.getElementById("email").value;
+            var grade = document.getElementById("grade").value;
+
+            var card = `
+                <h2>Визитная карточка</h2>
+                <p><strong>ФИО:</strong> ${fullName}</p>
+                <p><strong>Дата рождения:</strong> ${birthdate}</p>
+                <p><strong>Номер зачетки:</strong> ${studentId}</p>
+                <p><strong>Пол:</strong> ${gender}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Оценка:</strong> ${grade}</p>
+            `;
+
+            document.getElementById("cardContainer").innerHTML = card;
+        }
+    </script>
+  <br>
+  <a href="index.html">Назад</a>
+</body>
+</html>
